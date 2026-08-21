@@ -8,7 +8,6 @@
     "deploy": "shopify hydrogen deploy --assets-dir dist/client --worker-dir dist/server",
     "dev": "vite dev",
     "https:dev": "vite dev",
-    "https:setup": "mkcert -install && mkdir -p \"$HOME/.shopify/hydrogen/certs\" && mkcert -cert-file \"$HOME/.shopify/hydrogen/certs/local.tryhydrogen.dev.pem\" -key-file \"$HOME/.shopify/hydrogen/certs/local.tryhydrogen.dev-key.pem\" local.tryhydrogen.dev",
     "preview": "react-router build && vite preview",
     "typecheck": "react-router typegen && tsc && hydrogen gql check --fail-on-warn"
   },

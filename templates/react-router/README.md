@@ -51,19 +51,14 @@ npm run dev
 
 Customer Accounts are enabled for real stores when the account values documented in `.env.example` are present. Generate a session secret with `openssl rand -hex 32`.
 
-Customer Account OAuth requires trusted local HTTPS. Install [mkcert](https://github.com/FiloSottile/mkcert), then generate the local certificate:
-
-```bash
-npm run https:setup
-```
-
-Then run:
+Customer Account OAuth requires trusted local HTTPS. Run:
 
 ```bash
 npm run https:dev
 ```
 
-Open <https://local.tryhydrogen.dev:5173>.
+On first startup, Hydrogen prompts to provision the trusted
+`local.tryhydrogen.dev` certificate. Open <https://local.tryhydrogen.dev:5173>.
 
 The HTTPS dev server prints the exact Customer Account callback URI, JavaScript
 origin, and logout URI to register for the storefront in Shopify admin.
@@ -78,7 +73,6 @@ forces the mock explicitly.
 | Script | Does |
 | --- | --- |
 | `npm run dev` | Start the Vite dev server with Mini Oxygen. |
-| `npm run https:setup` | Create trusted `local.tryhydrogen.dev` certificates with mkcert. |
 | `npm run https:dev` | Start the Vite dev server with trusted local HTTPS. |
 | `npm run build` | Production React Router build for Oxygen. |
 | `npm run preview` | Build and preview locally with Vite and Mini Oxygen. |
