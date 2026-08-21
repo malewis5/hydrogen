@@ -1,5 +1,21 @@
 # @shopify/hydrogen
 
+## 2026.10.0-preview.2
+
+### Minor Changes
+
+- 78b94c5: Accept Liquid-style `?variant=<numeric id>` links on product pages.
+  
+  - `handleShopifyRoutes({routeTemplates})` now 302-redirects `?variant=` product URLs to the canonical option-params URL (`/products/x?variant=123` → `/products/x?Color=Red&Size=M`), resolving the variant through the Storefront API with `Cache.long()` when the client has a cache adapter, following combined-listing variants to their own product page, and stripping unknown or deleted variant ids. When both `variant` and option params are present, the variant wins.
+  - `buildProductSelectionSearchParams({style?, selectedOptions, variant?, optionNames, base?})` builds selection link search params, scrubbing stale option and `variant` params while preserving unrelated ones. `style: "variant"` emits a shareable `?variant=<numeric id>` link, falling back to option params when no variant is resolved.
+  - `getSelectedProductOptions` now treats the `variant` search param as reserved and never returns it as an option.
+  - Registered route redirects can now set an explicit `status` restricted to `301 | 302 | 303 | 307 | 308`.
+
+### Patch Changes
+
+- 4ea228e: Reset `before` and `after` pagination cursors when collection filters or sorting change.
+- 95ab890: Rename local HTTPS development scripts from `https:dev` to `dev:https` and rely on the Vite plugin to provision certificates automatically.
+
 ## 2026.10.0-preview.1
 
 ### Minor Changes
